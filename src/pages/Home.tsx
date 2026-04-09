@@ -1,19 +1,46 @@
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Boxes, ShieldCheck, Truck } from 'lucide-react';
 import { PRODUCT_CATEGORIES } from '../constants';
 
 export default function Home() {
   const totalProducts = PRODUCT_CATEGORIES.reduce((count, category) => count + category.products.length, 0);
+  const heroVideoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const video = heroVideoRef.current;
+    if (!video) return;
+
+    const ensurePlaying = () => {
+      const playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(() => {
+          // Mobile browsers may block until next user gesture; retry happens on future events.
+        });
+      }
+    };
+
+    ensurePlaying();
+    video.addEventListener('pause', ensurePlaying);
+    document.addEventListener('visibilitychange', ensurePlaying);
+
+    return () => {
+      video.removeEventListener('pause', ensurePlaying);
+      document.removeEventListener('visibilitychange', ensurePlaying);
+    };
+  }, []);
 
   return (
     <div className="bg-white min-h-screen">
       <section className="relative border-b-4 border-black overflow-hidden">
         <video
-          className="absolute inset-0 w-full h-full object-cover opacity-70"
+          ref={heroVideoRef}
+          className="absolute inset-0 w-full h-full object-cover opacity-70 pointer-events-none"
           autoPlay
           loop
           muted
           playsInline
+          disablePictureInPicture
           preload="metadata"
         >
           <source src="/videos/homepage-hero.mp4" type="video/mp4" />
