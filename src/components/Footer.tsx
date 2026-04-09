@@ -1,13 +1,24 @@
-import { useState } from 'react';
-import { Factory, Settings, Phone, Mail, MapPin, Truck, RefreshCw } from 'lucide-react';
+import React, { useState } from 'react';
+import { Factory, Settings, Phone, Mail, MapPin, Truck, RefreshCw, Lock, UserPlus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
   const [policyTab, setPolicyTab] = useState<'shipping' | 'returns'>('shipping');
+  const [authTab, setAuthTab] = useState<'login' | 'signup'>('login');
+  const [authEmail, setAuthEmail] = useState('');
+  const [authPassword, setAuthPassword] = useState('');
+  const [authName, setAuthName] = useState('');
+  const [authSubmitted, setAuthSubmitted] = useState(false);
+
+  const handleAuthSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setAuthSubmitted(true);
+    setTimeout(() => setAuthSubmitted(false), 3000);
+  };
 
   return (
     <footer className="bg-steel border-t-8 border-industrial-orange text-white">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 px-6 md:px-12 py-16 md:py-20 w-full font-sans text-sm tracking-wide">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-12 px-6 md:px-12 py-16 md:py-20 w-full font-sans text-sm tracking-wide">
         <div>
           <div className="text-3xl md:text-5xl font-black text-white mb-6 font-display uppercase flex items-center gap-3">
             <img src="/images/logo.png" alt="Forez Corp" className="w-12 h-12 md:w-16 md:h-16" />
@@ -50,6 +61,77 @@ export default function Footer() {
               <span>INFO@FOREZCORP.COM</span>
             </div>
           </div>
+        </div>
+
+        {/* Admin Login / Signup */}
+        <div>
+          <h5 className="text-industrial-orange font-black uppercase text-xl mb-4">ADMIN PORTAL</h5>
+
+          {/* Tab switcher */}
+          <div className="inline-flex border border-gray-700 mb-5">
+            <button
+              type="button"
+              onClick={() => { setAuthTab('login'); setAuthSubmitted(false); }}
+              className={`flex items-center gap-2 px-4 py-2 text-xs font-black uppercase tracking-widest transition-colors ${
+                authTab === 'login' ? 'bg-industrial-orange text-white' : 'text-gray-400 hover:text-white'
+              }`}
+            >
+              <Lock className="w-3 h-3" /> Login
+            </button>
+            <button
+              type="button"
+              onClick={() => { setAuthTab('signup'); setAuthSubmitted(false); }}
+              className={`flex items-center gap-2 px-4 py-2 text-xs font-black uppercase tracking-widest transition-colors ${
+                authTab === 'signup' ? 'bg-industrial-orange text-white' : 'text-gray-400 hover:text-white'
+              }`}
+            >
+              <UserPlus className="w-3 h-3" /> Sign Up
+            </button>
+          </div>
+
+          {authSubmitted ? (
+            <div className="border border-industrial-orange/50 bg-industrial-orange/10 px-4 py-3 text-xs font-black uppercase tracking-widest text-industrial-orange">
+              {authTab === 'login' ? 'WELCOME BACK.' : 'ACCOUNT REQUEST SENT.'}
+            </div>
+          ) : (
+            <form onSubmit={handleAuthSubmit} className="flex flex-col gap-3">
+              {authTab === 'signup' && (
+                <input
+                  type="text"
+                  required
+                  placeholder="FULL NAME"
+                  value={authName}
+                  onChange={e => setAuthName(e.target.value)}
+                  autoComplete="name"
+                  className="w-full h-10 px-3 bg-white/10 border border-gray-700 text-white placeholder-gray-500 text-xs font-bold uppercase outline-none focus:border-industrial-orange transition-colors"
+                />
+              )}
+              <input
+                type="email"
+                required
+                placeholder="EMAIL ADDRESS"
+                value={authEmail}
+                onChange={e => setAuthEmail(e.target.value)}
+                autoComplete="email"
+                className="w-full h-10 px-3 bg-white/10 border border-gray-700 text-white placeholder-gray-500 text-xs font-bold uppercase outline-none focus:border-industrial-orange transition-colors"
+              />
+              <input
+                type="password"
+                required
+                placeholder="PASSWORD"
+                value={authPassword}
+                onChange={e => setAuthPassword(e.target.value)}
+                autoComplete="current-password"
+                className="w-full h-10 px-3 bg-white/10 border border-gray-700 text-white placeholder-gray-500 text-xs font-bold uppercase outline-none focus:border-industrial-orange transition-colors"
+              />
+              <button
+                type="submit"
+                className="w-full h-10 bg-industrial-orange text-white text-xs font-black uppercase tracking-widest hover:opacity-90 transition-opacity mt-1"
+              >
+                {authTab === 'login' ? 'LOG IN' : 'CREATE ACCOUNT'}
+              </button>
+            </form>
+          )}
         </div>
       </div>
 
