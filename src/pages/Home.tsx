@@ -11,6 +11,18 @@ export default function Home() {
     const video = heroVideoRef.current;
     if (!video) return;
 
+    // Reinforce autoplay requirements for mobile browsers (especially iOS Safari).
+    video.muted = true;
+    video.defaultMuted = true;
+    video.autoplay = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('autoplay', '');
+    video.setAttribute('loop', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', 'true');
+
     const ensurePlaying = () => {
       const playPromise = video.play();
       if (playPromise && typeof playPromise.catch === 'function') {
@@ -21,10 +33,14 @@ export default function Home() {
     };
 
     ensurePlaying();
+    video.addEventListener('loadeddata', ensurePlaying);
+    video.addEventListener('canplay', ensurePlaying);
     video.addEventListener('pause', ensurePlaying);
     document.addEventListener('visibilitychange', ensurePlaying);
 
     return () => {
+      video.removeEventListener('loadeddata', ensurePlaying);
+      video.removeEventListener('canplay', ensurePlaying);
       video.removeEventListener('pause', ensurePlaying);
       document.removeEventListener('visibilitychange', ensurePlaying);
     };
