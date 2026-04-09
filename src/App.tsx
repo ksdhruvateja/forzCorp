@@ -7,6 +7,8 @@ import Catalog from './pages/Catalog';
 import Sourcing from './pages/Sourcing';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Shipping from './pages/Shipping';
+import AdminPortal from './pages/AdminPortal';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -32,6 +34,8 @@ export default function App() {
           <Route path="/sourcing" element={<Sourcing />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/shipping" element={<Shipping />} />
+          <Route path="/admin" element={<AdminPortal />} />
         </Routes>
       </main>
       {!isSourcingPage && <Footer />}

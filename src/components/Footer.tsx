@@ -1,21 +1,7 @@
-import React, { useState } from 'react';
-import { Factory, Settings, Phone, Mail, MapPin, Truck, RefreshCw, Lock, UserPlus } from 'lucide-react';
+import { Factory, Settings, Phone, Mail, MapPin, Lock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
-  const [policyTab, setPolicyTab] = useState<'shipping' | 'returns'>('shipping');
-  const [authTab, setAuthTab] = useState<'login' | 'signup'>('login');
-  const [authEmail, setAuthEmail] = useState('');
-  const [authPassword, setAuthPassword] = useState('');
-  const [authName, setAuthName] = useState('');
-  const [authSubmitted, setAuthSubmitted] = useState(false);
-
-  const handleAuthSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setAuthSubmitted(true);
-    setTimeout(() => setAuthSubmitted(false), 3000);
-  };
-
   return (
     <footer className="bg-steel border-t-8 border-industrial-orange text-white">
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-12 px-6 md:px-12 py-16 md:py-20 w-full font-sans text-sm tracking-wide">
@@ -41,6 +27,7 @@ export default function Footer() {
           <h5 className="text-industrial-orange font-black uppercase text-xl mb-4">QUICK LINKS</h5>
           <Link to="/" className="text-gray-400 hover:text-white transition-colors uppercase font-bold">Catalog</Link>
           <Link to="/sourcing" className="text-gray-400 hover:text-white transition-colors uppercase font-bold">Bulk Sourcing</Link>
+          <Link to="/shipping" className="text-gray-400 hover:text-white transition-colors uppercase font-bold">Shipping & Returns</Link>
           <Link to="/about" className="text-gray-400 hover:text-white transition-colors uppercase font-bold">About & Credentials</Link>
           <Link to="/contact" className="text-gray-400 hover:text-white transition-colors uppercase font-bold">Contact Engineering</Link>
         </div>
@@ -66,171 +53,18 @@ export default function Footer() {
         {/* Admin Login / Signup */}
         <div>
           <h5 className="text-industrial-orange font-black uppercase text-xl mb-4">ADMIN PORTAL</h5>
-
-          {/* Tab switcher */}
-          <div className="inline-flex border border-gray-700 mb-5">
-            <button
-              type="button"
-              onClick={() => { setAuthTab('login'); setAuthSubmitted(false); }}
-              className={`flex items-center gap-2 px-4 py-2 text-xs font-black uppercase tracking-widest transition-colors ${
-                authTab === 'login' ? 'bg-industrial-orange text-white' : 'text-gray-400 hover:text-white'
-              }`}
-            >
-              <Lock className="w-3 h-3" /> Login
-            </button>
-            <button
-              type="button"
-              onClick={() => { setAuthTab('signup'); setAuthSubmitted(false); }}
-              className={`flex items-center gap-2 px-4 py-2 text-xs font-black uppercase tracking-widest transition-colors ${
-                authTab === 'signup' ? 'bg-industrial-orange text-white' : 'text-gray-400 hover:text-white'
-              }`}
-            >
-              <UserPlus className="w-3 h-3" /> Sign Up
-            </button>
-          </div>
-
-          {authSubmitted ? (
-            <div className="border border-industrial-orange/50 bg-industrial-orange/10 px-4 py-3 text-xs font-black uppercase tracking-widest text-industrial-orange">
-              {authTab === 'login' ? 'WELCOME BACK.' : 'ACCOUNT REQUEST SENT.'}
-            </div>
-          ) : (
-            <form onSubmit={handleAuthSubmit} className="flex flex-col gap-3">
-              {authTab === 'signup' && (
-                <input
-                  type="text"
-                  required
-                  placeholder="FULL NAME"
-                  value={authName}
-                  onChange={e => setAuthName(e.target.value)}
-                  autoComplete="name"
-                  className="w-full h-10 px-3 bg-white/10 border border-gray-700 text-white placeholder-gray-500 text-xs font-bold uppercase outline-none focus:border-industrial-orange transition-colors"
-                />
-              )}
-              <input
-                type="email"
-                required
-                placeholder="EMAIL ADDRESS"
-                value={authEmail}
-                onChange={e => setAuthEmail(e.target.value)}
-                autoComplete="email"
-                className="w-full h-10 px-3 bg-white/10 border border-gray-700 text-white placeholder-gray-500 text-xs font-bold uppercase outline-none focus:border-industrial-orange transition-colors"
-              />
-              <input
-                type="password"
-                required
-                placeholder="PASSWORD"
-                value={authPassword}
-                onChange={e => setAuthPassword(e.target.value)}
-                autoComplete="current-password"
-                className="w-full h-10 px-3 bg-white/10 border border-gray-700 text-white placeholder-gray-500 text-xs font-bold uppercase outline-none focus:border-industrial-orange transition-colors"
-              />
-              <button
-                type="submit"
-                className="w-full h-10 bg-industrial-orange text-white text-xs font-black uppercase tracking-widest hover:opacity-90 transition-opacity mt-1"
-              >
-                {authTab === 'login' ? 'LOG IN' : 'CREATE ACCOUNT'}
-              </button>
-            </form>
-          )}
-        </div>
-      </div>
-
-      <div className="border-t-4 border-black px-6 md:px-12 py-10 bg-steel">
-        <div className="max-w-6xl mx-auto">
-          <h5 className="text-industrial-orange font-black uppercase text-xl mb-5">ForezCorp Shipping Information</h5>
-
-          <div className="inline-flex border-2 border-black bg-black/30 mb-6">
-            <button
-              type="button"
-              onClick={() => setPolicyTab('shipping')}
-              className={`px-5 py-2 font-black uppercase tracking-wide transition-colors ${
-                policyTab === 'shipping' ? 'bg-industrial-orange text-black' : 'text-white hover:bg-white/10'
-              }`}
-            >
-              <span className="inline-flex items-center gap-2"><Truck className="w-4 h-4" />Shipping</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setPolicyTab('returns')}
-              className={`px-5 py-2 font-black uppercase tracking-wide transition-colors ${
-                policyTab === 'returns' ? 'bg-industrial-orange text-black' : 'text-white hover:bg-white/10'
-              }`}
-            >
-              <span className="inline-flex items-center gap-2"><RefreshCw className="w-4 h-4" />Returns</span>
-            </button>
-          </div>
-
-          {policyTab === 'shipping' ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-200">
-              <div className="space-y-4 text-sm font-semibold">
-                <p className="text-white font-black uppercase">Shipping Carriers</p>
-                <p>Primarily ships via UPS.</p>
-                <p>International orders may use other carriers when provided by the customer.</p>
-
-                <p className="text-white font-black uppercase pt-2">Delivery Options & Timeframes</p>
-                <p>UPS Ground: about 5 business days.</p>
-                <p>UPS 3-Day Select: about 3 business days.</p>
-                <p>UPS 2nd Day Air: about 2 business days.</p>
-                <p>UPS Next Day Air: about 1 business day.</p>
-                <p>Orders should typically be placed before 10 AM PST (Mon-Fri) for these timelines.</p>
-                <p className="text-industrial-orange">Alaska & Hawaii: add 1 extra day.</p>
-              </div>
-
-              <div className="space-y-4 text-sm font-semibold">
-                <p className="text-white font-black uppercase">Order Processing & Dispatch</p>
-                <p>Orders may ship same day if placed early enough.</p>
-                <p>Otherwise, processing can take up to 3 business days.</p>
-                <p>Orders before about 11 AM PST have a higher chance of same-day shipping.</p>
-                <p>Orders after about 2 PM PST may ship next day.</p>
-                <p>UPS pickup cutoff is about 4 PM PST.</p>
-
-                <p className="text-white font-black uppercase pt-2">International Shipping</p>
-                <p>International shipping is available.</p>
-                <p>You may need to provide your own carrier details.</p>
-                <p>ForezCorp will confirm feasibility before shipment.</p>
-
-                <p className="text-white font-black uppercase pt-2">Important Policies</p>
-                <p>ForezCorp is not responsible for lost, damaged, or delivered-but-not-received shipments.</p>
-                <p>Customers must contact the shipping carrier directly for shipping issues.</p>
-                <p>Tracking updates can be delayed; wait a few days before escalating.</p>
-              </div>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-200">
-              <div className="space-y-4 text-sm font-semibold">
-                <p className="text-white font-black uppercase">General Policy</p>
-                <p>Most products are non-cancellable / non-returnable (NCNR).</p>
-                <p>Customers are expected to review carefully before purchasing.</p>
-
-                <p className="text-white font-black uppercase pt-2">International / Export Orders</p>
-                <p>No returns or exchanges are allowed.</p>
-                <p>Exception: only if item is defective or damaged on arrival.</p>
-                <p>Claims must be reported within 3 days of delivery with photos and a description.</p>
-
-                <p className="text-white font-black uppercase pt-2">Domestic Orders</p>
-                <p>Returns are allowed within 3 days of delivery, when applicable.</p>
-                <p>Items must be unused and in original packaging with proof of purchase.</p>
-                <p>Return authorization is required before sending anything back.</p>
-              </div>
-
-              <div className="space-y-4 text-sm font-semibold">
-                <p className="text-white font-black uppercase">Non-Returnable Items</p>
-                <p>Customized and made-to-order products are strictly non-returnable.</p>
-
-                <p className="text-white font-black uppercase pt-2">Return Shipping</p>
-                <p>Customer pays return shipping unless the item is confirmed defective.</p>
-
-                <p className="text-white font-black uppercase pt-2">Refund Process</p>
-                <p>Refunds are issued only after inspection and approval.</p>
-                <p>Approved refunds go to the original payment method.</p>
-                <p>Refund processing may take up to 15 business days plus bank processing time.</p>
-
-                <p className="text-white font-black uppercase pt-2">Warranty</p>
-                <p>1-year limited warranty covers manufacturing defects and normal-use failures.</p>
-                <p>Warranty does not cover misuse, physical damage, unauthorized modifications, or improper installation/conditions.</p>
-              </div>
-            </div>
-          )}
+          <p className="text-gray-400 text-xs font-bold uppercase mb-4">
+            Open secure admin login in a new tab.
+          </p>
+          <a
+            href="/admin"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-industrial-orange text-white px-5 py-3 text-xs font-black uppercase tracking-widest hover:opacity-90 transition-opacity"
+          >
+            <Lock className="w-3 h-3" />
+            Open Admin Portal
+          </a>
         </div>
       </div>
 
@@ -238,6 +72,7 @@ export default function Footer() {
         <div>© 2026 FOREZ CORP. NYS/NYC CERTIFIED MBE.</div>
         <div className="flex gap-8">
           <a href="#" className="hover:text-white">PRIVACY</a>
+          <Link to="/shipping" className="hover:text-white">SHIPPING</Link>
           <a href="#" className="hover:text-white">COMPLIANCE</a>
           <a href="#" className="hover:text-white">LEGAL</a>
         </div>
