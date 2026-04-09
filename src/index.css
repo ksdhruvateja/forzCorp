@@ -35,3 +35,16 @@
 .animate-marquee-slow {
   animation: marquee 20s linear infinite;
 }
+
+html,
+body,
+#root {
+  min-height: 100%;
+  background: #0b132b;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+}
