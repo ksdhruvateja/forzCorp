@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 export default function Footer() {
   return (
     <footer className="bg-steel border-t-8 border-industrial-orange text-white">
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-12 px-6 md:px-12 py-16 md:py-20 w-full font-sans text-sm tracking-wide">
-        <div>
-          <div className="text-3xl md:text-5xl font-black text-white mb-6 font-display uppercase flex items-center gap-3">
-            <img src="/images/logo.png" alt="Forez Corp" className="w-12 h-12 md:w-16 md:h-16" />
+      <div className="grid grid-cols-2 xl:grid-cols-4 gap-8 md:gap-12 px-4 sm:px-6 md:px-12 py-14 md:py-20 w-full font-sans text-sm tracking-wide">
+        <div className="col-span-2 xl:col-span-1">
+          <div className="text-2xl sm:text-3xl md:text-5xl font-black text-white mb-6 font-display uppercase flex items-center gap-3">
+            <img src="/images/logo.png" alt="Forez Corp" className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16" />
             FOREZ CORP
           </div>
           <p className="text-gray-400 mb-6 font-bold uppercase">
@@ -23,7 +23,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 col-span-1">
           <h5 className="text-industrial-orange font-black uppercase text-xl mb-4">QUICK LINKS</h5>
           <Link to="/" className="text-gray-400 hover:text-white transition-colors uppercase font-bold">Catalog</Link>
           <Link to="/sourcing" className="text-gray-400 hover:text-white transition-colors uppercase font-bold">Bulk Sourcing</Link>
@@ -32,7 +32,7 @@ export default function Footer() {
           <Link to="/contact" className="text-gray-400 hover:text-white transition-colors uppercase font-bold">Contact Engineering</Link>
         </div>
 
-        <div>
+        <div className="col-span-1">
           <h5 className="text-industrial-orange font-black uppercase text-xl mb-4">HEADQUARTERS</h5>
           <div className="text-gray-400 leading-relaxed font-bold space-y-4">
             <div className="flex items-start gap-3">
@@ -51,7 +51,7 @@ export default function Footer() {
         </div>
 
         {/* Admin Login / Signup */}
-        <div>
+        <div className="col-span-2 xl:col-span-1">
           <h5 className="text-industrial-orange font-black uppercase text-xl mb-4">ADMIN PORTAL</h5>
           <p className="text-gray-400 text-xs font-bold uppercase mb-4">
             Open secure admin login in a new tab.
@@ -68,9 +68,9 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="bg-black py-5 px-6 md:px-12 border-t-4 border-black flex flex-col md:flex-row justify-between items-center text-[10px] font-black uppercase tracking-widest text-gray-500 gap-4">
-        <div>© 2026 FOREZ CORP. NYS/NYC CERTIFIED MBE.</div>
-        <div className="flex gap-8">
+      <div className="bg-black py-5 px-4 sm:px-6 md:px-12 border-t-4 border-black flex flex-col md:flex-row justify-between items-center text-[10px] font-black uppercase tracking-widest text-gray-500 gap-4">
+        <div className="text-center md:text-left">© 2026 FOREZ CORP. NYS/NYC CERTIFIED MBE.</div>
+        <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
           <a href="#" className="hover:text-white">PRIVACY</a>
           <Link to="/shipping" className="hover:text-white">SHIPPING</Link>
           <a href="#" className="hover:text-white">COMPLIANCE</a>

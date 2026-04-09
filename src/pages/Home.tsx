@@ -20,42 +20,42 @@ export default function Home() {
         </video>
         <div className="absolute inset-0 bg-[#071a35]/80"></div>
 
-        <div className="relative z-10 px-6 md:px-8 py-20 md:py-28">
+        <div className="relative z-10 px-4 sm:px-6 md:px-8 py-16 sm:py-20 md:py-28">
           <div className="max-w-6xl mx-auto">
             <div className="mb-6">
-              <span className="inline-flex items-center border border-white/30 bg-black/35 px-4 py-2 text-[11px] md:text-xs font-black uppercase tracking-[0.18em] text-industrial-orange">
+              <span className="inline-flex items-center border border-white/30 bg-black/35 px-3 sm:px-4 py-2 text-[10px] md:text-xs font-black uppercase tracking-[0.12em] md:tracking-[0.18em] text-industrial-orange">
                 Forez Corp - Industrial Supply Partner
               </span>
             </div>
-            <h1 className="text-4xl md:text-7xl font-black leading-[0.9] tracking-tight uppercase text-white max-w-5xl">
+            <h1 className="text-3xl sm:text-4xl md:text-7xl font-black leading-[0.95] md:leading-[0.9] tracking-tight uppercase text-white max-w-5xl">
               Bulk Procurement Experts for Critical Operations
             </h1>
-            <p className="mt-6 text-base md:text-xl text-blue-100 font-semibold max-w-4xl uppercase tracking-wide">
+            <p className="mt-5 md:mt-6 text-sm sm:text-base md:text-xl text-blue-100 font-semibold max-w-4xl uppercase tracking-wide">
               Fast sourcing, compliant fulfillment, and dependable delivery for infrastructure, facilities, and enterprise maintenance teams.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3 text-xs md:text-sm font-black uppercase tracking-widest">
+            <div className="mt-6 flex flex-wrap gap-2 sm:gap-3 text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-wide md:tracking-widest">
               <span className="bg-black/45 border border-white/25 px-3 py-2 text-white">NYS / NYC Certified</span>
               <span className="bg-black/45 border border-white/25 px-3 py-2 text-white">Priority Quote Response</span>
               <span className="bg-black/45 border border-white/25 px-3 py-2 text-white">Nationwide Coverage</span>
             </div>
-            <div className="mt-10 flex flex-wrap gap-4">
+            <div className="mt-8 md:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
               <Link
                 to="/sourcing"
-                className="inline-flex items-center border border-white/25"
+                className="inline-flex items-center border border-white/25 w-full sm:w-auto"
               >
                 <span className="bg-industrial-orange text-white px-4 py-3 font-black uppercase">+</span>
-                <span className="bg-black/55 text-white px-6 py-3 font-black uppercase tracking-wide hover:bg-black/75 transition-colors">
+                <span className="bg-black/55 text-white px-5 sm:px-6 py-3 font-black uppercase tracking-wide hover:bg-black/75 transition-colors flex-1 text-center sm:text-left">
                   Start New Request
                 </span>
               </Link>
               <Link
                 to="/catalog"
-                className="inline-flex items-center border border-white/25"
+                className="inline-flex items-center border border-white/25 w-full sm:w-auto"
               >
                 <span className="bg-white text-black px-4 py-3 font-black uppercase">
                   <ArrowRight className="w-4 h-4" />
                 </span>
-                <span className="bg-black/45 text-white px-6 py-3 font-black uppercase tracking-wide hover:bg-black/70 transition-colors">
+                <span className="bg-black/45 text-white px-5 sm:px-6 py-3 font-black uppercase tracking-wide hover:bg-black/70 transition-colors flex-1 text-center sm:text-left">
                   Browse Catalog
                 </span>
               </Link>
@@ -64,7 +64,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-6 md:px-8 py-10 border-b-4 border-black bg-concrete">
+      <section className="px-4 sm:px-6 md:px-8 py-10 border-b-4 border-black bg-concrete">
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div className="bg-white border-2 border-black p-5 flex items-center gap-4">
             <Boxes className="w-6 h-6 text-industrial-orange" />
@@ -90,7 +90,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-6 md:px-8 py-14">
+      <section className="px-4 sm:px-6 md:px-8 py-14">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl md:text-4xl font-black uppercase tracking-tight mb-6">
             Quick Access
