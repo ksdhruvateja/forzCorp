@@ -21,7 +21,7 @@ export default function App() {
   const isSourcingPage = location.pathname === '/sourcing';
 
   return (
-    <div className="min-h-screen flex flex-col font-sans selection:bg-industrial-orange selection:text-white">
+    <div className="min-h-screen flex flex-col font-sans selection:bg-engineering-blue selection:text-white">
       <ScrollToTop />
       {!isSourcingPage && <Navbar />}
       <main className="flex-grow">

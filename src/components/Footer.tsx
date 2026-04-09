@@ -158,6 +158,7 @@ export default function Footer() {
           <a href="#" className="hover:text-white">PRIVACY</a>
           <a href="#" className="hover:text-white">COMPLIANCE</a>
           <a href="#" className="hover:text-white">LEGAL</a>
+          <a href="/admin" className="hover:text-white border-l border-gray-700 pl-8">ADMIN LOGIN</a>
         </div>
       </div>
     </footer>

@@ -53,7 +53,7 @@ export default function About() {
                 title: "NYS/NYC Certified",
                 desc: "Approved vendor for New York State and New York City municipal and enterprise sourcing.",
                 icon: <Landmark className="w-16 h-16 text-industrial-orange" />,
-                color: "bg-orange-50",
+                color: "bg-blue-50",
                 image: "https://stratcomllc.com/wp-content/uploads/2018/09/NYS-WBE-Certified-Business.gif"
               }
             ].map((cert, idx) => (
