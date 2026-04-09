@@ -152,13 +152,12 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="bg-black py-8 px-6 md:px-12 border-t-4 border-black flex flex-col md:flex-row justify-between items-center text-[10px] font-black uppercase tracking-widest text-gray-500 gap-4">
+      <div className="bg-black py-5 px-6 md:px-12 border-t-4 border-black flex flex-col md:flex-row justify-between items-center text-[10px] font-black uppercase tracking-widest text-gray-500 gap-4">
         <div>© 2026 FOREZ CORP. NYS/NYC CERTIFIED MBE.</div>
         <div className="flex gap-8">
           <a href="#" className="hover:text-white">PRIVACY</a>
           <a href="#" className="hover:text-white">COMPLIANCE</a>
           <a href="#" className="hover:text-white">LEGAL</a>
-          <a href="/admin" className="hover:text-white border-l border-gray-700 pl-8">ADMIN LOGIN</a>
         </div>
       </div>
     </footer>
