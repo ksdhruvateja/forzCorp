@@ -8,12 +8,19 @@ export default function Navbar() {
   const location = useLocation();
 
   const navLinks = [
-    { name: 'Catalog', href: '/' },
+    { name: 'Catalog', href: '/catalog' },
     { name: 'Sourcing', href: '/sourcing' },
     { name: 'Shipping', href: '/shipping' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ];
+
+  const isActive = (href: string) => {
+    if (href === '/catalog') {
+      return location.pathname === '/catalog' || location.pathname.startsWith('/catalog/');
+    }
+    return location.pathname === href;
+  };
 
   return (
     <nav className="sticky top-0 z-50 bg-steel text-white border-b-4 border-black px-4 md:px-8 py-3 md:py-4 flex justify-between items-center w-full">
@@ -29,7 +36,7 @@ export default function Navbar() {
               to={link.href}
               className={cn(
                 "text-white hover:text-industrial-orange transition-all pb-1 border-b-4 border-transparent",
-                location.pathname === link.href && "text-industrial-orange border-industrial-orange"
+                isActive(link.href) && "text-industrial-orange border-industrial-orange"
               )}
             >
               {link.name}

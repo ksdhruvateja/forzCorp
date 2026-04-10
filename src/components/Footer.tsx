@@ -25,7 +25,7 @@ export default function Footer() {
 
         <div className="flex flex-col gap-4 col-span-1">
           <h5 className="text-industrial-orange font-black uppercase text-xl mb-4">QUICK LINKS</h5>
-          <Link to="/" className="text-gray-400 hover:text-white transition-colors uppercase font-bold">Catalog</Link>
+          <Link to="/catalog" className="text-gray-400 hover:text-white transition-colors uppercase font-bold">Catalog</Link>
           <Link to="/sourcing" className="text-gray-400 hover:text-white transition-colors uppercase font-bold">Bulk Sourcing</Link>
           <Link to="/shipping" className="text-gray-400 hover:text-white transition-colors uppercase font-bold">Shipping & Returns</Link>
           <Link to="/about" className="text-gray-400 hover:text-white transition-colors uppercase font-bold">About & Credentials</Link>

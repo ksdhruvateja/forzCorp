@@ -68,7 +68,16 @@ export default function About() {
                 <div className={`flex-1 flex items-center justify-center mb-8 brutalist-border ${cert.color} relative overflow-hidden`}>
                   <div className="absolute inset-0 industrial-hatch opacity-10"></div>
                   {cert.image ? (
-                    <img src={cert.image} alt={cert.title} className="w-full h-full object-contain p-4 relative z-10" />
+                    <img
+                      src={cert.image}
+                      alt={`${cert.title} certification badge`}
+                      className="w-full h-full object-contain p-4 relative z-10"
+                      loading="lazy"
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = 'https://placehold.co/600x400?text=Product+Image+Coming+Soon';
+                      }}
+                    />
                   ) : (
                     cert.icon
                   )}
